@@ -21,7 +21,6 @@ env.config();
 
 //Mongoose DB Connection
 const db = `mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@cluster0.9ojmg.mongodb.net/${process.env.MONGO_DB_NAME}?retryWrites=true&w=majority`;
-// const db = `mongodb+srv://root:admin@cluster0.9ojmg.mongodb.net/${process.env.MONGO_DB_NAME}?retryWrites=true&w=majority`;
 mongoose.connect(db).then(() => {
   console.log("Database connected");
 });
