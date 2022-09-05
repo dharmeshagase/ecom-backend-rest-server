@@ -9,14 +9,17 @@ exports.createPage = (req, res) => {
     if (banners && banners.length > 0) {
         pageObj.banners = banners.map((banner) => ({
             // img: `${process.env.API_SERVER}/public/${banner.filename}`,
-            img: `/public/${banner.filename}`,
+            // img: `/public/${banner.filename}`,
+            img: `${banner.location}`, //Path for S3 
+
             navigateTo: `/bannerClicked?categoryId=${category}&type=${type}`
         }))
     }
     if (products && products.length > 0) {
         pageObj.products = products.map((product) => ({
             // img: `${process.env.API_SERVER}/public/${product.filename}`,
-            img: `/public/${product.filename}`,
+            // img: `/public/${product.filename}`,
+            img: `${product.location}`,//Path for S3
             navigateTo: `/productClicked?categoryId=${category}&type=${type}`
         }))
     }

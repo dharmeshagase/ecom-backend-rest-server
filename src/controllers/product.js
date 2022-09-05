@@ -6,7 +6,7 @@ exports.addProduct = (req, res) => {
   let productPictures = [];
   if (req.files.length > 0) {
     productPictures = req.files.map((file) => {
-      return { img: file.filename };
+      return { img: file.location };
     });
   }
   const newProduct = new Product({
@@ -22,7 +22,7 @@ exports.addProduct = (req, res) => {
   newProduct.save((error, product) => {
     if (error) return res.status(400).json({ error });
     if (category)
-      return res.status(200).json({ message: "Product created successfully" });
+      return res.status(200).json({ message: "Product created successfully" ,files:req.files});
   });
 };
 

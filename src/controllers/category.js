@@ -35,8 +35,10 @@ exports.addCategory = (req, res) => {
 
   if (req.file) {
     // categoryObj.categoryImage =
-    //   process.env.API_SERVER + "/public/" + req.file.filename;
-    categoryObj.categoryImage ="/public/" + req.file.filename;
+    //   process.env.API_SERVER + "/public/" + req.file.filename; //for local server
+    // categoryObj.categoryImage ="/public/" + req.file.filename; //for heroku server
+    categoryObj.categoryImage =`${req.file.location}`; //for aws S3
+
   }
   const newCategory = new category(categoryObj);
   newCategory.save((error, category) => {
